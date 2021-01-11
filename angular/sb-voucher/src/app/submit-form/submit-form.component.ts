@@ -2,6 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-submit-form',
@@ -31,7 +34,8 @@ export class SubmitFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +59,25 @@ export class SubmitFormComponent implements OnInit {
   //captcha function for success
   handleSuccess(data) {
     this.captchaSuccess = true;
+  }
+
+  //submit button
+  submit()
+  {
+    if (this.fg.valid)
+    {
+      Swal.fire({
+        icon: 'success',
+        title: 'Approved!',
+        text: 'You have just earned a voucher!',
+        footer: '<a href>Redeem your voucher here!</a>',
+        showConfirmButton: false
+      })
+    }
+    else
+    {
+      Swal.fire('Oops...', 'Fill all the fields!', 'error');
+    }
   }
 
   //autoshow modal
