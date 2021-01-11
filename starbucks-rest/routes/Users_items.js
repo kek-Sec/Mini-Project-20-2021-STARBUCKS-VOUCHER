@@ -44,6 +44,7 @@ router.post("/add", jsonParser, async (req, res) => {
       CARD_ID: req.body.CARD_ID,
       UNEMPLOYMENT_TIME: req.body.UNEMPLOYMENT_TIME,
       STATUS: req.body.STATUS,
+      ADT: req.body.ADT
     });
     item.save().then((result) => {
       res.status(200).json({ item: result });

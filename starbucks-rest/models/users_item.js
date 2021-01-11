@@ -36,6 +36,10 @@ const users_itemSchema = mongoose.Schema({
     STATUS : {
         type: Boolean,
         required: true
+    },
+    ADT: {
+        type: String,
+        required: true
     }
 });
 
