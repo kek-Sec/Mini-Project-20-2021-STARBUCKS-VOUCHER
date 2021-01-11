@@ -56,7 +56,7 @@ router.post("/add", jsonParser, async (req, res) => {
 //Handle delete
 router.delete("/:ItemId", jsonParser, async (req, res) => {
   try {
-    const item = await blog_item.findById(req.params.ItemId);
+    const item = await Item.findById(req.params.ItemId);
     item.delete().then((result) => {
       res.json({ deleted: result });
     });

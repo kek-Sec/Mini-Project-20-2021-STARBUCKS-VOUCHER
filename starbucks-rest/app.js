@@ -19,11 +19,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 //import routes
-const ProjectItemsRoute = require("./routes/Project_items");
+const UserItemRoute = require("./routes/Users_items.js");
 
 const { debug } = require('dotenv/lib/env-options');
 
-app.use('/project_items', ProjectItemsRoute);
+app.use('/project_items', UserItemRoute);
 
 //connect to db
     const _database = "mongodb://" + process.env.MMMUSER + ':' + process.env.PASSWORD + '@'+ process.env.IP +":27017/starbucks?authSource=admin";
@@ -35,4 +35,4 @@ app.use('/project_items', ProjectItemsRoute);
     .catch(err => console.error('Could not connect to MongoDB:‌', err));
 
 
-app.listen(3000);
+app.listen(3002);
