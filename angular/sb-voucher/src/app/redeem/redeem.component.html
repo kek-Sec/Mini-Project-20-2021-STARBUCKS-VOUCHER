@@ -1,1 +1,40 @@
-<p>redeem works!</p>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title primary" id="modal-basic-title">Redeem voucher</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="fg">
+        <div class="input-group">
+          <input
+            id = "voucher"
+            type="text"
+            class="form-control"
+            formControlName="voucher"
+            placeholder="insert voucher"
+            aria-label="insert voucher"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="submit()"
+      >
+        Validate
+      </button>
+    </div>
+  </ng-template>
+  
+  <button
+    id="open_modal"
+    class="btn btn-lg btn-outline-primary"
+    [hidden]="true"
+    (click)="open(content)"
+  >
+    Launch modal
+  </button>
+  
+  <hr />
+  
