@@ -49,7 +49,7 @@ export class RedeemComponent implements OnInit {
       this.generateQR(this.fg.controls['voucher'].value).then((res) => {
         imgData = res;
         doc.setFontSize(40);
-        doc.text(this.fg.controls['voucher'].value, 35, 25);
+        doc.text(this.fg.controls['voucher'].value, 5, 25);
         doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
         doc.save('voucher.pdf');
       });

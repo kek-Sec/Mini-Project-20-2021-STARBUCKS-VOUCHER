@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -70,13 +70,16 @@ export class SubmitFormComponent implements OnInit {
         icon: 'success',
         title: 'Approved!',
         text: 'You have just earned a voucher!',
-        footer: '<a href>Redeem your voucher here!</a>',
-        showConfirmButton: false
-      })
+        confirmButtonText: 'Redeem!'
+      } as SweetAlertOptions).then((result) => {
+        if (result.value) {
+          this.router.navigate(['redeem/' + uuidv4()]);
+        }})
     }
     else
     {
       Swal.fire('Oops...', 'Fill all the fields!', 'error');
+      this.router.navigate(['welcome']);
     }
   }
 
